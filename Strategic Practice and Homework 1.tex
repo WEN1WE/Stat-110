@@ -1,0 +1,245 @@
+%This is my super simple Real Analysis Homework template
+
+\documentclass{article}
+
+\usepackage{xeCJK}  % 中文
+\usepackage{enumitem} % 标签 (a) (b) (c)
+\usepackage[dvipsnames]{xcolor} % 颜色
+\usepackage{ulem}  % 划掉文字
+\usepackage{cancel}  % 花掉公式
+\usepackage{indentfirst} % 缩进
+\usepackage{amsmath}  % 数学符号
+\usepackage{amssymb}
+
+
+
+\title{Strategic Practice and Homework 1}
+\author{Wen}
+\date\today
+
+
+\begin{document}
+\maketitle %This command prints the title based on information entered above
+
+%Section and subsection automatically number unless you put the asterisk next to them.
+\section*{Strategic Practice}
+\subsection*{Problem 1}
+\begin{enumerate}[label=(\alph*)]
+\item $>$
+
+4个骰子最多有24点，题目中21点与22点与这个数字比较接近，所以应该是用数数的方法。
+
+对于21点，有 6 6 6 3，6 6 5 4，6 5 5 5，将四个骰子进行编号，那么 6 6 6 3 可能情况有4种，6 6 5 4 可能情况有12种，6 5 5 5 可能情况有4种，一共20种。
+
+对于22点，有 6 6 6 4，6 6 5 5，将四个骰子进行编号，那么6 6 6 4可能情况有4种，6 6 5 5可能情况有6种，一共10种。
+\item \sout{$<$} \textcolor{red}{=}
+
+\sout{两个回文字母，要求第一个字母与第二个字母相同，则一共有26种可能。
+
+如果是三个字母是回文，则要求前2个字母相同，中间字母任意，则一共有26 * 26 种可能}
+
+\textcolor{red}{上面的错解来源于数个数时，但是2个事件每个的概率是不一样的，所以不能单独数个数，换一种想法，两个事件都是要求前后两个字母相同，则概率是相同的。也可以用indicator来想这个问题}
+
+\end{enumerate}
+
+\clearpage %Gives us a page break before the next section. Optional.
+
+
+\subsection*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item flush表示5长牌颜色相同，花色有四种，但是不含不能是10 J Q K A
+
+$$ \frac{4\left( \left( \frac{13}{5} \right)  -1\right)  }{\left( \frac{52}{5} \right)  } $$
+
+\item \sout{有两对，也就是13张牌中选3张牌，然后再从中间选出来2张牌作为2对}
+
+
+$$
+\cancel{
+\frac{\left( \frac{13}{3} \right)  \left( \frac{3}{2} \right)  \  }{\left( \frac{52}{5} \right)  } 
+}
+$$
+
+
+\textcolor{red}{上面的例子错再没有考虑到每种牌有花色的问题，2张牌有6种颜色，另外2张也有6种颜色，单独的一张有4种颜色，一共144种结果，错解乘以144就是正确答案}
+
+$$
+\textcolor{red} {
+\frac{\left( \frac{13}{3} \right)  \left( \frac{3}{2} \right)  \left( \frac{4}{2} \right)^{2}  \left( \frac{4}{1} \right)  }{\left( \frac{52}{5} \right)  } 
+}
+$$
+
+\end{enumerate}
+\clearpage
+
+
+
+\subsection*{Problem 3}
+
+\begin{enumerate}[label=(\alph*)]
+\item 向右走了111步，向上走了110步，总共221步，也就是在221步种选111步向右
+
+$$ 
+\left( \frac{221}{111} \right)  
+$$
+
+\item 这道题目可以两步走，第一步到达（110，111），第二步到达（210，211）。用乘法规则来处理。
+
+$$
+\left( \frac{221}{111} \right)  \left( \frac{200}{100} \right)  
+$$
+\end{enumerate}
+
+\clearpage
+
+\subsection*{Problem 4}
+假定如果只有一个字母，有26种可能，如果有两个字母有26 * 25种可能，以此类推，一共有26 + 26 * 25 + 26 * 25 * 24 + ...... + 26!, 每种情况的概率都相同。所以使用所以的26个字母的概率就是
+
+$$
+\frac{26!}{26\  +\  26\  \times 25\  +\  ...\  +\  26!} \  =\  \frac{1}{1\  +\  1!+\  \frac{1}{2!} \  +\  \frac{1}{3!} \  +\  ...\  +\  \frac{1}{25!} \  } \  
+$$
+我们发现分母的结果其实与e的泰勒展开接近
+
+
+\clearpage
+\subsection*{Problem 5}
+
+\begin{itemize}
+\item 我们要做的事情是从n个物品中随意挑选物品
+\item 左边代表先规定要取多少个物品，然后再取物品
+\item 右边代表有n个物品，每个物品可以选或者不选。
+\end{itemize}
+
+\clearpage
+
+\subsection*{Problem 6}
+左边发现是2n的全排列，除以n！，表示有n个东西的全排列重复了，再除以$2^{n}$，表示这n个东西内部还有排列重复了，总结来看，就是将2n个东西，分成配对的n组。带结果值尝试一下，当n=2时，左边等于3。这与把4个物品，分成配对的2组，结果一样。
+\begin{itemize}
+
+
+\item 我们要做的事情是将2n个东西，分成配对的n组。
+\item 对于左边，每一种配对的情况，对应全排列重复了$2^{n}\times n!$次
+\item 右边，这里不会
+\end{itemize}
+
+\textcolor{red}{右边可以想对所以人进行编号，1号可能和n-1个人进行配对。再找2号（也可能是3号），可能和n-3个人进行配对，用树的思想更好理解这个问题}
+
+\clearpage
+\subsection*{Problem 7}
+
+\begin{itemize}
+\item 我们要做的是，在n+1个人中，选择k个人
+\item 对于左边，我们假定对所有人进行编号，最后取出的k个人中，分为含有1号和不含有1号两者情况，当含有1号时，有$\left( \frac{n}{k-1} \right) $种可能，当不含有1号时，有$\left( \frac{n}{k} \right) $种可能性。
+\item 右边就是上面所说的
+\end{itemize}
+
+\clearpage
+
+
+\section*{Homework 1}
+\subsection*{Problem 1}
+这个事件等价于6个人中选3个人，3个人选到的都是女生。
+$$
+\frac{1}{\left( \frac{6}{3} \right)  } 
+$$
+
+\clearpage
+\subsection*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item 这是一个典型的分堆问题，在国防科技大学概率论课堂有详细的说明，是用递推的思维来想的，先分一堆，再分一堆，但也要注意重复数的问题，例如分成相同的两堆，最后是要除以2的。
+
+哈佛大学给出的答案，就是把全排列去除以重复的次数，\textcolor{red}{反过来想，就是一次分堆，对应多少全排列}
+
+$$
+\left( \frac{12!}{2!5!5!\cdot 2} \right)  
+$$
+
+\item 与上题类似，\textcolor{red}{反过来想，一次分堆，对应多少次全排列}
+$$
+\left( \frac{12!}{4!4!4!3!} \right)  
+$$
+
+\end{enumerate}
+
+\clearpage
+
+
+\subsection*{Problem 3}
+这个问题相当于有10个框子，有3个球，向框子里面仍球。给框子编号，给球编号。一共可能有$10^{3}$种可能。若要球不进入同一个框子，有10*9*8种可能。所以有重叠的概率是 
+$$
+1\  -\  \frac{10\  \times \  9\  \times \  8}{{}10^{3}} 
+$$
+
+\clearpage
+
+\subsection*{Problem 4}
+这个问题相当于有6个框子，有6个球，向框子里面仍球。当每个框子都是1个球的时候，才能保证每个框子中的球小于2
+
+$$
+1-\frac{6!}{6^{6}} 
+$$
+
+\clearpage
+
+\subsection*{Problem 5}
+第一次捕获后，麋鹿被分为了被标记和没有被标记。相当于从n里选出k个，从N-n里面选出m-k个。但也要考虑范围。
+
+$$
+\frac{\left( \frac{n}{k} \right)  \left( \frac{N-n}{m-k} \right) } {\left( \frac{N}{n} \right)  } 
+$$
+这个就是超几何分布
+\clearpage
+
+\subsection*{Problem 6}
+\begin{enumerate}[label=(\alph*)]
+\item 由于第一个人拿出球后没有看，先后拿与拿出来2个球，分给两个人的概率是相同的，所以两个人的概率是相同的
+
+\item 对所以的球进行编号，第一次拿出来是绿球的概率，很简单，是
+$$
+\frac{g}{r+g} 
+$$
+第二次取球，可以用树来做，一共有$\left( r+g\right)  \left( r+g-1\right)  $种情况。第一次取到红球，第二次取绿球，一共 $r\cdot g$种情况。第一次取到绿球，第二次取到绿球，一共$g\left( r+g\right)$种情况。最后结果为
+$$
+\frac{r\cdot g+g\left( g-1\right)  }{\left( r+g\right)  \left( r+g-1\right)  } =\frac{g}{r+g} 
+$$
+可以看出，两个结果是相同的
+
+\item 这里可以用条件概率，设事件A为第一次红色，B为第二次红色。
+$$
+P\left( AB\right)  +P(A^{C}B^{C})=P\left( A\right)  P\left( B|A\right)  +P\left( A^{C}\right)  P(B^{C}|A^{C})\  =\  \frac{r}{16} \cdot \frac{r-1}{15} +\frac{16-r}{16} \cdot \frac{15-r}{15} 
+$$
+
+$$
+P(AB^{C})+P(A^{C})P(B)=2\cdot \frac{r}{16} \cdot \frac{16-r}{15} 
+$$
+令上面上个式子相等，解出$r=6$或$r=10$
+
+\textcolor{red}{还有更快的方法：由于所求两个事件互为对立事件，并且概率相等，所以上面的式子值为$\frac{1}{2}$}
+\end{enumerate}
+
+\clearpage
+\subsection*{Problem 7}
+\begin{enumerate}[label=(\alph*)]
+\item 
+这道题其实用递归的思想可以解，类似于前面的story proofs第7题
+$$
+\left( \begin{gathered}n+1\\ k+1\end{gathered} \right)  =\left( \begin{gathered}n\\ k\end{gathered} \right)  +\left( \begin{gathered}n\\ k+1\end{gathered} \right)  =\left( \begin{gathered}n\\ k\end{gathered} \right)  +\left( \begin{gathered}n-1\\ k\end{gathered} \right)  +\left( \begin{gathered}n-1\\ k+1\end{gathered} \right)  =...=\left( \begin{gathered}n\\ k\end{gathered} \right)  +\left( \begin{gathered}n-1\\ k\end{gathered} \right)  +...+\left( \begin{gathered}k\\ k\end{gathered} \right)  
+$$
+我们的故事就可以这样编，选出一个最年长的人，将所有含有他的结果先计算出来，为$\left( \begin{gathered}n\\ k\end{gathered} \right) $，在剩下的n个人中，在选一个最年长的，将含有他的结果都计算出来，为$\left( \begin{gathered}n-1\\ k\end{gathered} \right)  $，以此类推，最后剩下的k+2个人的时候，选一个最年长的，将含有他的结果都计算出来，为$\left( \begin{gathered}k+1\\ k\end{gathered} \right)  $, 然后最后只剩下k+1个人，就是最后一种情况。
+
+\item 一共假设有N gummi bears，中间加4个隔板就可以将5种口味隔开，那么总共有N+4个点，在其中选择4个点作为隔板，就能得出有多少种口味的组合。
+$$
+\left( \begin{gathered}N+4\\ 4\end{gathered} \right)  
+$$
+
+\textcolor{red}{题目说的是N从30到50的一个求和，总共多少}
+
+
+$$
+\textcolor{red} {
+\sum^{50}_{i=30} \left( \begin{gathered}i+4\\ 4\end{gathered} \right)  =\sum^{54}_{j=34} \left( \begin{gathered}j\\ 4\end{gathered} \right)  =\sum^{54}_{4} \left( \begin{gathered}j\\ 4\end{gathered} \right)  -\sum^{33}_{4} \left( \begin{gathered}j\\ 4\end{gathered} \right)  =\left( \begin{gathered}55\\ 5\end{gathered} \right)  -\left( \begin{gathered}34\\ 5\end{gathered} \right)  
+}
+$$
+
+\end{enumerate}
+\end{document}
